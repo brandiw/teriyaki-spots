@@ -1,0 +1,32 @@
+<h1>All Spots List</h1>
+
+<p>Here are some suggestions!</p>
+
+<% if(spots && spots.length > 0) { %>
+  <div class="row">
+    <% spots.forEach((s) => { %>
+      <div class="col s12 m4">
+        <div class="card">
+          <div class="card-image">
+            <img src="<%=s.image%>">
+            <span class="card-title"><%= s.name %></span>
+          </div>
+          <div class="card-content">
+            <div>
+              <p><strong>Open Sunday?</strong> <%= s.sunday ? 'Yes' : 'No' %></p>
+              <p><strong>Neighborhood?</strong> <%= s.neighborhood %></p>
+              <p><strong>Price?</strong> <%= s.price %>🥢</p>
+            </div>
+            <hr>
+            <p><%= s.description %></p>
+          </div>
+          <div class="card-action">
+            <a href="/spots/<%=s.id%>">Visit Page</a>
+          </div>
+        </div>
+      </div>
+    <% }) %>
+  </div>
+<% } else { %>
+  <p>Nothing here to see</p>
+<% } %>

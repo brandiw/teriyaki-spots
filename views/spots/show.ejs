@@ -1,0 +1,24 @@
+<h1 class="center"><%= spot.name %></h1>
+
+<div class="row">
+  <div class="col s12 m4">
+    <div>
+      <img class="responsive-img" src="<%=spot.image%>">
+    </div>
+    <hr>
+    <div>
+      <p><strong>Neighborhood?</strong> <%= spot.neighborhood %></p>
+      <p><strong>Specialty?</strong> <%= spot.specialty %></p>
+      <p><strong>Price?</strong> <%= spot.price %>🥢</p>
+    </div>
+  </div>
+  <div class="col s12 m8">
+    <%= spot.description %>
+    <hr>
+    <% if(spot.sunday) { %>
+      <h3 class="purple-text text-accent-4">OMG! OPEN SUNDAYS!!! 😱</h3>
+    <% } else { %>
+      <p>As expected, not open Sundays. ☹️</p>
+    <% } %>
+  </div>
+</div>
