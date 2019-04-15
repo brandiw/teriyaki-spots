@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 module.exports = (sequelize, DataTypes) => {
   const spot = sequelize.define('spot', {
     name: DataTypes.STRING,
@@ -10,9 +10,12 @@ module.exports = (sequelize, DataTypes) => {
     sunday: DataTypes.BOOLEAN,
     price: DataTypes.INTEGER,
     description: DataTypes.TEXT
-  }, {});
+  }, {})
+
   spot.associate = function(models) {
     // associations can be defined here
-  };
-  return spot;
-};
+    models.spot.hasMany(models.review)
+  }
+
+  return spot
+}

@@ -6,6 +6,7 @@ app.set('view engine', 'ejs')
 app.use(layouts)
 app.use(express.urlencoded({ extended: false })) // IMPORTANT: This makes post forms work!
 
+app.use('/reviews', require('./controllers/reviews'))
 app.use('/spots', require('./controllers/spots'))
 
 app.get('/', (req, res) => {
