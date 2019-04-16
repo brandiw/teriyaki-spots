@@ -30,7 +30,10 @@ router.get('/new', (req, res) => {
 })
 
 router.get('/:id', (req, res) => {
-  db.spot.findByPk(req.params.id)
+  db.spot.findOne({
+    where: { id: req.params.id },
+    include: [ db.review ]
+  })
   .then((foundSpot) => {
     res.render('spots/show', {
       spot: foundSpot

@@ -18,14 +18,24 @@
     <% if(spot.sunday) { %>
       <h3 class="purple-text text-accent-4">OMG! OPEN SUNDAYS!!! 😱</h3>
     <% } else { %>
-      <p>As expected, not open Sundays. ☹️</p>
+      <p>As expected, not open Sundays. 😤 </p>
     <% } %>
   </div>
 </div>
 <div class="row">
   <div class="col s12">
     <h3 class="center">User Reviews</h3>
-    TODO: REVIEWS GO HERE
+    <% if(spot.reviews && spot.reviews.length) { %>
+      <% spot.reviews.forEach((r) => { %>
+        <div class="blue-text darken-2">
+          <p>Rated <%= r.rating %> ⭐️s</p>
+          <p>&lsquo;<em><%= r.comment %></em>&rsquo; &mdash;<%= r.name %></p>
+          <hr>
+        </div>
+      <% }) %>
+    <% } else { %>
+      <h4>Be the first to review <%= spot.name %>!</h4>
+    <% } %>
   </div>
 </div>
 <div class="row">
@@ -33,6 +43,7 @@
     <h3 class="center">Add New Review</h3>
     <div class="row">
       <form class="col s12" method="POST" action="/reviews">
+        <input type="hidden" name="spotId" value="<%=spot.id%>">
         <div class="row">
           <div class="input-field col s12 m6">
             <input placeholder="Your Name" id="name" name="name" type="text" class="validate">
